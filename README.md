@@ -1,2 +1,2 @@
 # kotori-project
-whatsapp bot using express framework
+simple whatsapp bot
