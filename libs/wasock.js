@@ -18,7 +18,10 @@ async function kotoriSock() {
     if (connection === "open") {
       console.log("is open");
     } else if (connection === "close") {
-      kotoriSock();
+      console.log("Trying to reconnecting.");
+      setTimeout(async () => {
+        kotoriSock();
+      }, 3000);
     }
   });
   kotori.ev.on("messages.upsert", async (m) => {
