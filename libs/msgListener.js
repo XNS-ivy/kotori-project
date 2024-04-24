@@ -1,4 +1,5 @@
 async function Listener(theMessage) {
+  if(!theMessage.message) return;
   const isGroup = theMessage.key.participant === undefined ? false : true;
   const phoneNumber =
     theMessage.key.participant === undefined
