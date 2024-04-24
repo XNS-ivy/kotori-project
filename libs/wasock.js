@@ -1,19 +1,21 @@
 const {
-  default: makeWASocket,
+  default: kotoriSocket,
   useMultiFileAuthState,
 } = require("@whiskeysockets/baileys");
 const pino = require("pino");
 const { Listener } = require("./msgListener.js");
 
 async function kotoriSock() {
-  const auth = await useMultiFileAuthState("session");
-  const kotori = makeWASocket({
+  const { state, saveCreds } = await useMultiFileAuthState("session");
+  const kotori = kotoriSocket({
     printQRInTerminal: true,
-    browser: ["itsuka-kotori", "Firefox", "1.0.0"],
-    auth: auth.state,
+    browser: ["Ituka-Kotori", "Chrome", "1.0.0"],
+    auth: state,
     logger: pino({ level: "silent" }),
+    defaultQueryTimeoutMs: undefined,
+    syncFullHistory: false,
   });
-  kotori.ev.on("creds.update", auth.saveCreds);
+  kotori.ev.on("creds.update", saveCreds);
   kotori.ev.on("connection.update", ({ connection }) => {
     if (connection === "open") {
       console.log("is open");
