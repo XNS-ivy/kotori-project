@@ -1,4 +1,4 @@
-async function Listener(theMessage) {
+async function Listener(kotori,theMessage) {
   if(!theMessage.message) return;
   const isGroup = theMessage.key.participant === undefined ? false : true;
   const phoneNumber =
@@ -19,6 +19,7 @@ async function Listener(theMessage) {
   );
   // console.log(theMessage);
   // typeMessage(theMessage);
+  await reply(kotori,theMessage, isType);
 }
 function typeMessage(theMessage) {
   // const testObject = Object.keys(theMessage.message);
@@ -40,5 +41,14 @@ function typeMessage(theMessage) {
     textMsg: text,
   }
 }
+// reply function --
 
-module.exports = { Listener };
+async function reply(message, isType) {
+  if(isType.object != "imageMessage"){
+    if(message.startWith()){
+      
+    }
+  }
+}
+module.exports = { Listener 
+};

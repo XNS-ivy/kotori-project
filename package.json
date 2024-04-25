@@ -4,7 +4,8 @@
   "description": "whatsapp bot simple",
   "main": "kotori.js",
   "scripts": {
-    "start": "node kotori"
+    "start": "node kotori",
+    "test": "node test_package/test"
   },
   "repository": {
     "type": "git",

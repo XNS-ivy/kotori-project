@@ -3,7 +3,7 @@ const {
   useMultiFileAuthState,
 } = require("@whiskeysockets/baileys");
 const pino = require("pino");
-const { Listener } = require("./msgListener.js");
+const { Listener } = require("./message.js");
 
 async function kotoriSock() {
   const { state, saveCreds } = await useMultiFileAuthState("session");
@@ -29,7 +29,7 @@ async function kotoriSock() {
   kotori.ev.on("messages.upsert", async (m) => {
     if (!m.messages) return;
     const theMessage = m.messages[0];
-    await Listener(theMessage);
+    await Listener(kotori,theMessage);
   });
 }
 
