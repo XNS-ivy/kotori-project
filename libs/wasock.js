@@ -22,14 +22,18 @@ async function kotoriSock() {
     } else if (connection === "close") {
       console.log("Trying to reconnecting.");
       setTimeout(async () => {
-        kotoriSock();
+        try {
+          await kotoriSock();
+        } catch (error) {
+          console.error(error);
+        }
       }, 3000);
     }
   });
   kotori.ev.on("messages.upsert", async (m) => {
     if (!m.messages) return;
     const theMessage = m.messages[0];
-    await Listener(kotori,theMessage);
+    await Listener(kotori, theMessage);
   });
 }
 

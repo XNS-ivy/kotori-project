@@ -1,0 +1,10 @@
+{
+    "menu" : {
+        "menu" : "menu",
+        "sc" : "sc"
+    },
+    "help" : {
+        "bot" : "bot",
+        "help" : "help"
+    }
+}
